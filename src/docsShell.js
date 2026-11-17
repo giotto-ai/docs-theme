@@ -181,7 +181,13 @@ window.addEventListener("DOMContentLoaded", async () => {
       })
       .join("");
 
-    sidebarNav.innerHTML = categoryMarkup;
+    sidebarNav.innerHTML =
+      categoryMarkup ||
+      `<a class="nav-article sidebar-home" href="${escapeHtml(
+        helpCenterPath
+      )}">Overview</a>`;
+    sidebarNav.classList.add("is-loaded");
+    sidebarNav.setAttribute("aria-busy", "false");
   };
 
   const renderCategoryArticleCounts = () => {
@@ -249,7 +255,7 @@ window.addEventListener("DOMContentLoaded", async () => {
         : articles.slice(0, 4);
 
     navigation = { categories, sections, articles };
-    if (categories.length) renderSidebar();
+    renderSidebar();
     renderCategoryArticleCounts();
 
     results.forEach((result, index) => {
@@ -270,11 +276,15 @@ window.addEventListener("DOMContentLoaded", async () => {
     sidebarNav.innerHTML = `<a class="nav-article sidebar-home" href="${escapeHtml(
       helpCenterPath
     )}">Overview</a>`;
+    sidebarNav.classList.add("is-loaded");
+    sidebarNav.setAttribute("aria-busy", "false");
     console.warn(
       "Giotto navigation could not load Help Center data:",
       error.message
     );
   }
+
+  document.documentElement.classList.remove("giotto-loading");
 
   sidebarNav.addEventListener("click", (event) => {
     const toggle = event.target.closest("[data-section-toggle]");
