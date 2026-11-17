@@ -4953,6 +4953,26 @@ a:hover, a:active, a:focus {
   display: none;
 }
 
+.icon-button {
+  align-items: center;
+  display: inline-grid;
+  flex: none;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #6b7280;
+  font-size: 18px;
+}
+
+.icon-button:hover {
+  background: #f3f5f9;
+  color: #161a23;
+}
+
 .header {
   width: 100%;
   max-width: none;

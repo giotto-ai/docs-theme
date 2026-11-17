@@ -427,7 +427,10 @@
         if (text.length <= maxLength) {
           summary.textContent = text;
         } else {
-          const truncated = text.slice(0, maxLength).replace(/\s+\S*$/, "").trim();
+          const truncated = text
+            .slice(0, maxLength)
+            .replace(/\s+\S*$/, "")
+            .trim();
           summary.textContent = `${truncated}…`;
         }
       }
