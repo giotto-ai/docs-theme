@@ -4938,6 +4938,17 @@ a:hover, a:active, a:focus {
   text-decoration: none;
 }
 
+a[href],
+button:not(:disabled),
+[role=button],
+input[type=button],
+input[type=submit],
+input[type=reset],
+select,
+summary {
+  cursor: pointer;
+}
+
 :focus-visible {
   outline: 2px solid #9ca3af !important;
   outline-offset: 2px;
@@ -6302,9 +6313,19 @@ html.giotto-loading .article-layout {
   font-size: 14px;
 }
 
+.search-panel :focus-visible {
+  outline: 2px solid #161a23 !important;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(22, 26, 35, 0.14) !important;
+}
+
 .search-panel-form input:focus {
-  border-color: #b8bec9;
-  box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.35);
+  border-color: #161a23;
+}
+
+.search-panel-form input:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(22, 26, 35, 0.14) !important;
 }
 
 .search-results {

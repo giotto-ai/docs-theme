@@ -22,6 +22,15 @@ a {
   &:hover, &:active, &:focus { color: $giotto-foreground; text-decoration: none; }
 }
 
+a[href],
+button:not(:disabled),
+[role="button"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+select,
+summary { cursor: pointer; }
+
 :focus-visible {
   outline: 2px solid #9ca3af !important;
   outline-offset: 2px;
@@ -615,7 +624,13 @@ html.giotto-loading .article-layout { visibility: hidden; }
 .search-panel-header { align-items: center; display: flex; justify-content: space-between; margin-bottom: 14px; }
 .search-panel-header h2 { margin: 0; color: $giotto-foreground; font-size: 16px; }
 .search-panel-form input { width: 100%; height: 38px; padding: 0 12px; border: 1px solid $giotto-border; border-radius: 8px; outline: none; font-size: 14px; }
-.search-panel-form input:focus { border-color: #b8bec9; box-shadow: 0 0 0 3px $giotto-ring; }
+.search-panel :focus-visible {
+  outline: 2px solid $giotto-foreground !important;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(22, 26, 35, .14) !important;
+}
+.search-panel-form input:focus { border-color: $giotto-foreground; }
+.search-panel-form input:focus-visible { outline: none !important; box-shadow: 0 0 0 3px rgba(22, 26, 35, .14) !important; }
 .search-results { min-height: 0; max-height: 52vh; margin-top: 12px; overflow-y: auto; }
 .search-popular { width: 100%; }
 .search-popular h3 { margin: 0 0 8px; color: $giotto-foreground; font-size: 13px; font-weight: 600; }
