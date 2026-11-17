@@ -2,9 +2,9 @@
 
 ## Obiettivo
 
-Trasformare Copenhagen in un Help Center Zendesk con una UX vicina a xAI Docs: shell documentale persistente, navigazione gerarchica, ricerca sempre disponibile, contenuto editoriale leggibile e una gerarchia visuale adatta a API, tutorial e procedure operative.
+Trasformare il tema Zendesk in Giotto-theme con una UX vicina a xAI Docs: shell documentale persistente, navigazione gerarchica, ricerca sempre disponibile, contenuto editoriale leggibile e una gerarchia visuale adatta a API, tutorial e procedure operative.
 
-La copia di lavoro parte da Copenhagen Theme `4.57.1` (`2f730c0`) e mantiene il modello di distribuzione Zendesk Guide: template Curlybars, SCSS compilato con Rollup e moduli React caricati tramite import map.
+La copia di lavoro parte dal tema Zendesk `4.57.1` (`2f730c0`) e mantiene il modello di distribuzione Zendesk Guide: template Curlybars, SCSS compilato con Rollup e moduli React caricati tramite import map.
 
 ## Dati reali di docs.giotto.ai
 
@@ -24,7 +24,7 @@ La navigazione proposta deve quindi usare categorie come macro-sezioni e sezioni
 
 Poiché l'accesso diretto all'account Zendesk non è ancora disponibile, il progetto include `mock/`, una preview statica indipendente da ZCLI. Il mock contiene la stessa tassonomia locale, 57 record articolo, routing hash-based per homepage/categorie/sezioni/articoli e ricerca locale. Si avvia con `corepack yarn mock` e ascolta su `http://127.0.0.1:4173`.
 
-Il mock serve per validare rapidamente layout e interazioni. Non sostituisce il rendering Curlybars: dopo l'approvazione visuale, il markup verrà trasferito nei template Copenhagen e il dataset locale verrà sostituito dagli helper Zendesk.
+Il mock serve per validare rapidamente layout e interazioni. Non sostituisce il rendering Curlybars: il markup è stato trasferito nei template Giotto-theme, mentre il dataset locale resta disponibile per il preview offline.
 
 ## Direzione visuale
 
@@ -74,7 +74,7 @@ Propongo quindi questa integrazione pragmatica:
 1. usare i token di `g-ui/src/index.css` come riferimento per colori, radius, focus ring e tipografia;
 2. portare nel tema, in SCSS/HTML accessibile, i pattern `Sidebar`, `Button`, `Breadcrumb`, `Command`, `Badge`, `Card` e `Callout`;
 3. usare componenti shadcn come sorgente dei pattern comportamentali solo per le nuove interazioni vanilla JS;
-4. lasciare invariati i moduli React Garden esistenti di Copenhagen finché non emerge un requisito che giustifichi una migrazione React.
+4. lasciare invariati i moduli React Garden esistenti finché non emerge un requisito che giustifichi una migrazione React.
 
 In questo modo la UI resta coerente con Giotto/g-ui senza introdurre Tailwind nel pipeline Zendesk o rompere i bundle già supportati.
 

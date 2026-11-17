@@ -7,7 +7,7 @@
 # your translations with a different method.
 #
 
-title: "Copenhagen Theme Approval requests"
+title: "Giotto-theme Approval requests"
 packages:
   - "approval-requests"
 parts:

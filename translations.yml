@@ -1,13 +1,13 @@
 #
 # This file is part of the internal Zendesk translation system. It is used to generate the
-# translations/*.json files in the Copenhagen theme GitHub repository.
+# translations/*.json files in the Giotto-theme GitHub repository.
 #
 # If you are building your own theme, you should remove this file and modify
 # translation/*.json files directly.
 #
 
 ---
-title: "Help Center Copenhagen theme"
+title: "Help Center Giotto-theme"
 packages:
   - help_center_copenhagen_theme
 

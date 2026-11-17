@@ -1,6 +1,6 @@
 # Giotto local mock
 
-This is a dependency-free local preview for the Copenhagen redesign work. It uses a local dataset shaped like the public Giotto Help Center: 5 categories, 16 sections, and 57 article records. Article bodies are intentionally short mock content so we can iterate on layout without Zendesk access.
+This is a dependency-free local preview for the Giotto-theme redesign work. It uses a local dataset shaped like the public Giotto Help Center: 5 categories, 16 sections, and 57 article records. Article bodies are intentionally short mock content so we can iterate on layout without Zendesk access.
 
 ## Run
 
@@ -27,7 +27,7 @@ The mock supports:
 - full-text local search and `⌘ K` search dialog;
 - responsive mobile sidebar.
 
-The mock is deliberately separate from `templates/` because Curlybars is rendered by Zendesk. Once the visual direction is approved, the same markup and states can be ported into Copenhagen templates and the local dataset can be replaced by Zendesk helpers.
+The mock is deliberately separate from `templates/` because Curlybars is rendered by Zendesk. The same markup and states are ported into Giotto-theme templates, while the local dataset remains available for offline preview.
 
 ## Design-system alignment
 

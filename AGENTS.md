@@ -4,7 +4,7 @@ This file provides guidance to AI coding agents when working with code in this r
 
 ## Overview
 
-Copenhagen Theme is the default Zendesk Guide (Help Center) theme. It's a Curlybars-based theme with React components for complex UI elements, built using Rollup and SCSS.
+Giotto-theme is a Zendesk Guide (Help Center) theme. It's a Curlybars-based theme with React components for complex UI elements, built using Rollup and SCSS.
 
 ## Common Commands
 

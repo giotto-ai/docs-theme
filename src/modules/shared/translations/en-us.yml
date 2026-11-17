@@ -7,7 +7,7 @@
 # your translations with a different method.
 #
 
-title: "Copenhagen Theme Shared Translations"
+title: "Giotto-theme Shared Translations"
 packages:
   - "cph-theme-shared"
 parts:

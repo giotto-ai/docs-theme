@@ -7,7 +7,7 @@
 # your translations with a different method.
 #
 
-title: "Copenhagen Theme New Request Form"
+title: "Giotto-theme New Request Form"
 packages:
   - "new-request-form"
 parts:

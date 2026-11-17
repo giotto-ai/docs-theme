@@ -7,7 +7,7 @@
 # your translations with a different method.
 #
 
-title: "Copenhagen Theme Service catalog"
+title: "Giotto-theme Service catalog"
 packages:
   - "service-catalog"
 parts:

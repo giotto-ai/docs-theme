@@ -1,11 +1,11 @@
-# Copenhagen Theme by Zendesk
+# Giotto-theme
 
-The Copenhagen theme is the default Zendesk Guide theme. It is designed to be responsive and accessible.
+Giotto-theme is a responsive and accessible Zendesk Guide theme for Giotto documentation.
 Learn more about customizing Zendesk Guide [here](https://support.zendesk.com/hc/en-us/sections/206670747).
 
 ## Giotto docs theme
 
-This repository contains the Giotto-branded Copenhagen theme and a local preview that mirrors the Giotto documentation experience. The theme keeps the standard Zendesk Guide templates and build pipeline, while adding GiottoOS navigation, typography, branding, article layouts, responsive behavior, Lucide icons, and shadcn-compatible `data-slot` markup.
+This repository contains the Giotto Zendesk theme and a local preview that mirrors the Giotto documentation experience. It keeps the standard Zendesk Guide templates and build pipeline, while adding GiottoOS navigation, typography, branding, article layouts, responsive behavior, Lucide icons, and shadcn-compatible `data-slot` markup.
 
 The local preview lives in [`mock/`](./mock/) and supports local mock content by default. When configured, it can load live Zendesk Help Center data through the local OAuth proxy without exposing credentials in the browser.
 
@@ -54,14 +54,14 @@ The OAuth client must allow the `read` and `write` scopes required by `zcli` for
 
 Lighthouse is disabled by default while the end-user test account is not configured. To enable it later, create the `end_user_email` and `end_user_password` repository secrets and set the repository variable `RUN_LIGHTHOUSE` to `true`.
 
-The Copenhagen theme for Help Center consists of:
+The Giotto-theme for Help Center consists of:
 - [Manifest file](#manifest-file)
 - [Set of templates](#templates)
 - [Stylesheet and JavaScript files](#stylesheet-and-javascript)
 - [Assets folder](#assets).
 
 ## How to use
-This is the latest version of the Copenhagen theme available for Guide. It is possible to use this repository as a starting point to build your own custom theme. You can fork this repository as you see fit.
+This is the Giotto-theme implementation for Guide. The repository keeps the upstream Zendesk structure where it is useful, while the public-facing theme is branded and configured for Giotto.
 You can use your favorite IDE to develop themes and preview your changes locally in a web browser using [ZCLI](https://github.com/zendesk/zcli/). For details, read the [zcli themes](https://github.com/zendesk/zcli/blob/master/docs/themes.md) documentation.
 
 ## Customizing your theme
@@ -160,11 +160,11 @@ Notes:
 - Preview requires login so make sure to first run `yarn zcli login` if you haven't done that before.
 
 ## Assets
-The Copenhagen theme comes with a few JavaScript assets, but you can add other assets to your theme by placing them in the `assets` folder.
+The Giotto-theme comes with a few JavaScript assets, but you can add other assets to your theme by placing them in the `assets` folder.
 
 # React components
 
-From version 4.0.0, the Copenhagen theme uses some React components to render parts of the UI. These components are located in the `src/modules` folder and are built using the [Zendesk Garden](https://garden.zendesk.com/) component library.
+The theme uses React components to render parts of the UI. These components are located in the `src/modules` folder and are built using the [Zendesk Garden](https://garden.zendesk.com/) component library.
 
 These components are bundled as native [JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) as part of the Rollup build process, and they are emitted as JS files in the `assets` folder. Since assets are renamed when a theme is installed, the modules needs to be imported using the [asset helper](https://developer.zendesk.com/api-reference/help_center/help-center-templates/helpers/#asset-helper).
 
@@ -394,7 +394,7 @@ In this example, errors for the audit `tabindex` with the selector `body > a.ski
 Please keep in mind that this should only be used when strictly necessarity. Accessibility should be a focus and a priority when making changes to the theme.
 
 # Contributing
-Pull requests are welcome on GitHub at https://github.com/zendesk/copenhagen_theme. Please mention @zendesk/vikings when creating a pull request.
+Pull requests are welcome on GitHub at https://github.com/giotto-ai/docs-theme.
 
 We use [conventional commits](https://conventionalcommits.org/) to improve readability of the project history and to automate the release process. The commit message should therefore respect the following format:
 
