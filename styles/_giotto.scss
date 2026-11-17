@@ -560,8 +560,8 @@ a {
 .content-skeleton { display: none; }
 html.giotto-loading .content-skeleton { display: block; }
 html.giotto-loading .content-skeleton-article { display: grid; }
-html.giotto-loading .main-content > .hero,
-html.giotto-loading .main-content > .article-layout { visibility: hidden; }
+html.giotto-loading .hero,
+html.giotto-loading .article-layout { visibility: hidden; }
 .skeleton-line {
   display: block;
   border-radius: 7px;
