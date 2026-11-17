@@ -6084,6 +6084,10 @@ html.giotto-loading .content-skeleton-article {
   display: grid;
 }
 
+html:not(.giotto-loading) .content-skeleton {
+  display: none !important;
+}
+
 html.giotto-loading .hero,
 html.giotto-loading .article-layout {
   visibility: hidden;

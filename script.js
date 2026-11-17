@@ -684,6 +684,9 @@
     const releaseLoadingState = () => {
       window.clearTimeout(loadingTimeout);
       document.documentElement.classList.remove("giotto-loading");
+      document
+        .querySelectorAll(".content-skeleton")
+        .forEach((skeleton) => skeleton.remove());
     };
 
     loadingTimeout = window.setTimeout(() => {
