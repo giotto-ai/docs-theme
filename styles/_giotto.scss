@@ -713,8 +713,17 @@ a[href*="poweredbyzendesk"] { display: none !important; }
 
 .article-layout > article {
   width: 100%;
+  max-width: none;
+}
+
+.article-layout > article > .article-header,
+.article-layout > article > .article-body,
+.article-layout > article > .content-tags,
+.article-layout > article > .article-attachments {
+  width: 100%;
   max-width: 720px;
-  justify-self: center;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .article-layout .article-header {
