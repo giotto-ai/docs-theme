@@ -1,0 +1,1 @@
+import{a0 as a,a1 as e,a2 as n,j as s,a3 as t,a4 as o,at as r,a5 as c}from"shared";async function d(d,i,h){a(i),await e(h,i,[c]);try{const a=document.createElement("div");document.body.appendChild(a),n.render(s.jsx(t,{theme:o(d),children:s.jsx(r,{})}),a)}catch(a){console.error("Cannot render flash notifications",a)}}export{d as renderFlashNotifications};

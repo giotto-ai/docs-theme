@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Local Giotto Docs mock preview" />
+    <title>Giotto Docs — Local mock</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell" data-slot="sidebar-provider">
+      <aside class="docs-sidebar" id="docs-sidebar" data-slot="sidebar" aria-label="Documentation navigation">
+        <div class="sidebar-topline">
+          <a class="brand" href="#/" aria-label="Giotto Docs home">
+            <img class="brand-logo" src="/assets/giotto-wordmark.svg" alt="Giotto" />
+            <span class="brand-docs">Docs</span>
+          </a>
+          <button class="icon-button sidebar-close" data-action="close-sidebar" aria-label="Close navigation"><span data-icon="x"></span></button>
+        </div>
+        <nav id="sidebar-nav" class="sidebar-nav" data-slot="sidebar-menu"></nav>
+      </aside>
+      <div class="sidebar-scrim" data-action="close-sidebar"></div>
+
+      <div class="page-shell">
+        <header class="topbar">
+          <button class="icon-button menu-trigger" data-slot="button" data-action="open-sidebar" aria-label="Open navigation"><span data-icon="menu"></span></button>
+          <button class="topbar-search" data-slot="button" data-action="open-search" type="button" aria-label="Search documentation">
+            <span data-icon="search"></span>
+            <span class="topbar-search-label">Search docs</span>
+            <kbd class="shortcut" data-slot="kbd">⌘ K</kbd>
+          </button>
+          <div class="topbar-actions">
+            <a class="button button-ghost topbar-auth-button" data-slot="button" href="https://docs.giotto.ai/hc/en-001/signin" target="_blank" rel="noreferrer noopener">Sign in</a>
+            <a class="button button-primary topbar-auth-button" data-slot="button" href="https://docs.giotto.ai/hc/en-001/requests/new" target="_blank" rel="noreferrer noopener">Submit a request</a>
+          </div>
+        </header>
+
+        <main id="app" class="main-content"></main>
+      </div>
+    </div>
+
+    <div class="search-dialog" id="search-dialog" data-slot="command-dialog" hidden>
+      <div class="dialog-backdrop" data-action="close-search"></div>
+      <section class="search-panel" data-slot="command" role="dialog" aria-modal="true" aria-labelledby="search-title">
+        <div class="search-panel-header">
+          <h2 id="search-title">Search Giotto Docs</h2>
+          <button class="icon-button" data-action="close-search" aria-label="Close search"><span data-icon="x"></span></button>
+        </div>
+        <input id="dialog-search-input" data-slot="command-input" type="search" placeholder="Search articles, APIs, and tutorials" data-search-input />
+        <div id="search-results" class="search-results" aria-live="polite"></div>
+      </section>
+    </div>
+
+    <script src="/data.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
