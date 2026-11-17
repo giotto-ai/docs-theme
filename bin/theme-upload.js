@@ -15,15 +15,14 @@ function zcli(command, json = true) {
   }
 }
 
-const importOutput = zcli(`themes:import --brandId=${brandId}`, false);
-const themeId = importOutput.match(/theme ID:\s*(\d+)/)?.[1];
+const { themeId } = zcli(`themes:import --brandId=${brandId}`);
 
 if (!themeId) {
   console.error("Theme import completed without returning a theme ID.");
   process.exit(1);
 }
 
-zcli(`themes:publish --themeId=${themeId}`, false);
+zcli(`themes:publish --themeId=${themeId}`);
 
 const { themes } = zcli(`themes:list --brandId=${brandId}`);
 
