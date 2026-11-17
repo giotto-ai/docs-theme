@@ -226,6 +226,20 @@ window.addEventListener("DOMContentLoaded", async () => {
     });
   };
 
+  const categoryNameForArticle = (article) => {
+    if (article.category_name) return article.category_name;
+    if (article.category?.name) return article.category.name;
+
+    const section = navigation.sections.find(
+      (item) => String(item.id) === String(article.section_id)
+    );
+    const category = navigation.categories.find(
+      (item) => String(item.id) === String(section?.category_id)
+    );
+
+    return category?.name || "Documentation";
+  };
+
   try {
     const prefix = `/api/v2/help_center/${encodeURIComponent(locale)}`;
     const results = await Promise.allSettled([
@@ -339,7 +353,7 @@ window.addEventListener("DOMContentLoaded", async () => {
         )}"><span class="search-popular-copy"><strong>${escapeHtml(
           article.title
         )}</strong><small>${escapeHtml(
-          article.section_name || "Documentation"
+          categoryNameForArticle(article)
         )}</small></span>${icon("arrow")}</a>`;
       })
       .join("")}</div></section>`;
@@ -383,7 +397,7 @@ window.addEventListener("DOMContentLoaded", async () => {
             return `<a class="result-item" href="${escapeHtml(
               href
             )}"><h3>${escapeHtml(result.title)}</h3><small>${escapeHtml(
-              result.section_name || "Documentation"
+              categoryNameForArticle(result)
             )}</small><p>${escapeHtml(
               result.snippet || result.description || ""
             )}</p></a>`;
