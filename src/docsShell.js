@@ -71,7 +71,16 @@ function isCurrentUrl(url) {
   }
 }
 
+function removeZendeskBranding() {
+  document.querySelectorAll("a[href*='poweredbyzendesk']").forEach((link) => {
+    const wrapper = link.closest("footer") || link.parentElement;
+    if (wrapper && wrapper !== document.body) wrapper.remove();
+    else link.remove();
+  });
+}
+
 window.addEventListener("DOMContentLoaded", async () => {
+  removeZendeskBranding();
   const shell = document.querySelector("#app-shell");
   const sidebar = document.querySelector("#docs-sidebar");
   const sidebarNav = document.querySelector("#sidebar-nav");

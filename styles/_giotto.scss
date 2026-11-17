@@ -575,6 +575,7 @@ body.search-open { overflow: hidden; }
 
 .footer { display: none; }
 .footer-inner { align-items: center; display: flex; justify-content: space-between; max-width: 1180px; min-height: 64px; margin: 0 auto; padding: 0 32px; color: $giotto-muted; font-size: 12px; }
+a[href*="poweredbyzendesk"] { display: none !important; }
 
 @media (max-width: 1023px) {
   .app-shell { grid-template-columns: 240px minmax(0, 1fr); }

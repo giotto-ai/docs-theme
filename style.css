@@ -6372,6 +6372,10 @@ body.search-open {
   font-size: 12px;
 }
 
+a[href*=poweredbyzendesk] {
+  display: none !important;
+}
+
 @media (max-width: 1023px) {
   .app-shell {
     grid-template-columns: 240px minmax(0, 1fr);
