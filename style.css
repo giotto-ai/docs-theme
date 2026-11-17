@@ -6448,7 +6448,7 @@ body.search-open {
   display: flex;
   flex-direction: column;
   min-height: 260px;
-  background: #f3f5f9;
+  background: #fff;
 }
 
 .category-card:hover, .section-card:hover {
@@ -6501,7 +6501,7 @@ body.search-open {
 }
 
 .category-card p {
-  flex: 1;
+  flex: 1 1 auto;
 }
 
 .card-footer {
@@ -6916,10 +6916,14 @@ a[href*=poweredbyzendesk] {
 }
 
 .article-layout .article-footer .related-articles {
+  width: 100%;
+  max-width: none;
   margin: 0;
 }
 
 .article-layout .article-footer .related-articles > ul {
+  width: 100%;
+  max-width: none;
   margin: 0;
   padding: 0;
   list-style: none;
