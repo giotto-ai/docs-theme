@@ -79,4 +79,42 @@ window.addEventListener("DOMContentLoaded", () => {
       '<path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>';
     anchor.appendChild(icon);
   });
+
+  const articleUrl = window.location.href;
+  const articleTitle =
+    document.querySelector(".article-title")?.textContent.trim() ||
+    document.title;
+  const shareUrls = {
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      articleUrl
+    )}`,
+    x: `https://x.com/intent/post?text=${encodeURIComponent(
+      articleTitle
+    )}&url=${encodeURIComponent(articleUrl)}`,
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+      articleUrl
+    )}`,
+  };
+
+  document.querySelectorAll("[data-share-network]").forEach((link) => {
+    const url = shareUrls[link.dataset.shareNetwork];
+    if (url) link.href = url;
+  });
+
+  document
+    .querySelectorAll("[data-action='copy-article-link']")
+    .forEach((button) => {
+      button.addEventListener("click", async () => {
+        const label = button.querySelector("span");
+        try {
+          await navigator.clipboard.writeText(articleUrl);
+          if (label) label.textContent = "Copied";
+        } catch (error) {
+          if (label) label.textContent = "Copy failed";
+        }
+        window.setTimeout(() => {
+          if (label) label.textContent = "Copy link";
+        }, 1600);
+      });
+    });
 });
