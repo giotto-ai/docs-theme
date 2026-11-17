@@ -421,8 +421,17 @@
       const usedIds = new Set();
 
       headings.forEach((heading, index) => {
+        const headingText = (heading.textContent || "").trim();
+        if (
+          !headingText ||
+          /^\d+$/.test(headingText) ||
+          /^(?:https?:\/\/)?[\w.-]+\.[a-z]{2,}(?:\/|$)/i.test(headingText)
+        ) {
+          return;
+        }
+
         const baseId =
-          (heading.textContent || "section")
+          headingText
             .trim()
             .toLowerCase()
             .replace(/[^a-z0-9]+/g, "-")
@@ -440,7 +449,7 @@
 
         const link = document.createElement("a");
         link.href = `#${heading.id}`;
-        link.textContent = heading.textContent.trim();
+        link.textContent = headingText;
         link.className = `toc-level-${heading.tagName === "H3" ? "3" : "2"}`;
         toc.appendChild(link);
       });
@@ -729,6 +738,21 @@
         const count = counts.get(String(card.dataset.categoryId)) || 0;
         const label = card.querySelector(".category-card-count");
         if (label) label.textContent = `${count} articles`;
+
+        const category = navigation.categories.find(
+          (item) => String(item.id) === String(card.dataset.categoryId)
+        );
+        const eyebrow = card.querySelector(".card-eyebrow");
+        const categoryLabels = {
+          "Giotto Cloud": "Product",
+          "Giotto API": "Developers",
+          "Giotto on-prem": "Deployment",
+          "Tutorials and Courses": "Learn",
+          "Troubleshooting and FAQ": "Support",
+        };
+        if (category && eyebrow) {
+          eyebrow.textContent = categoryLabels[category.name] || "Documentation";
+        }
       });
     };
 

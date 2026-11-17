@@ -5380,6 +5380,17 @@ a:hover, a:active, a:focus {
   color: #4f5f8f;
 }
 
+.article-layout .article-body a {
+  text-decoration: underline;
+  text-decoration-color: rgba(79, 95, 143, 0.35);
+  text-underline-offset: 3px;
+}
+
+.article-layout .article-body a:hover {
+  color: #161a23;
+  text-decoration-color: currentColor;
+}
+
 .article-body h2 {
   scroll-margin-top: 92px;
   margin: 42px 0 12px;
@@ -5903,7 +5914,7 @@ a:hover, a:active, a:focus {
 .topbar-search {
   align-items: center;
   display: flex;
-  flex: 1 1 360px;
+  flex: 0 1 360px;
   gap: 8px;
   width: min(360px, 100%);
   min-width: 0;
@@ -6334,8 +6345,7 @@ body.search-open {
 }
 
 .footer {
-  border-top: 1px solid #e7e9f0;
-  background: #fff;
+  display: none;
 }
 
 .footer-inner {
@@ -6402,6 +6412,7 @@ body.search-open {
     padding: 0 16px;
   }
   .topbar-search {
+    flex: 1 1 auto;
     width: auto;
     max-width: none;
   }

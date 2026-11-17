@@ -11,8 +11,17 @@ window.addEventListener("DOMContentLoaded", () => {
     const usedIds = new Set();
 
     headings.forEach((heading, index) => {
+      const headingText = (heading.textContent || "").trim();
+      if (
+        !headingText ||
+        /^\d+$/.test(headingText) ||
+        /^(?:https?:\/\/)?[\w.-]+\.[a-z]{2,}(?:\/|$)/i.test(headingText)
+      ) {
+        return;
+      }
+
       const baseId =
-        (heading.textContent || "section")
+        headingText
           .trim()
           .toLowerCase()
           .replace(/[^a-z0-9]+/g, "-")
@@ -30,7 +39,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       const link = document.createElement("a");
       link.href = `#${heading.id}`;
-      link.textContent = heading.textContent.trim();
+      link.textContent = headingText;
       link.className = `toc-level-${heading.tagName === "H3" ? "3" : "2"}`;
       toc.appendChild(link);
     });
