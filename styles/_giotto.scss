@@ -636,12 +636,14 @@ body.search-open { overflow: hidden; }
 .page-intro p { margin: 0; color: $giotto-muted; font-size: 16px; line-height: 1.65; }
 .category-grid, .section-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .category-card, .section-card { display: block; padding: 22px; border: 1px solid $giotto-border; border-radius: 10px; background: #fff; box-shadow: 0 0 0 1px rgba(22, 26, 35, .02); transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
-.category-card:hover, .section-card:hover { border-color: #c9ced9; background: $giotto-surface-muted; box-shadow: 0 10px 24px rgba(24, 36, 42, .07); transform: translateY(-2px); text-decoration: none; }
+.category-card { display: flex; flex-direction: column; min-height: 260px; background: $giotto-surface-muted; }
+.category-card:hover, .section-card:hover { border-color: #c9ced9; background: #fff; box-shadow: 0 10px 24px rgba(24, 36, 42, .07); transform: translateY(-2px); text-decoration: none; }
 .card-eyebrow { color: $giotto-muted; font-size: 12px; font-weight: 500; text-transform: none; }
 .badge { align-items: center; display: inline-flex; width: fit-content; min-height: 20px; padding: 2px 8px; border: 1px solid transparent; border-radius: 999px; font-size: 12px; font-weight: 600; line-height: 1; white-space: nowrap; }
 .badge-secondary { border-color: $giotto-border; background: $giotto-surface-muted; color: $giotto-muted; }
 .category-card h3, .section-card h2 { margin: 10px 0 8px; color: $giotto-foreground; font-size: 16px; letter-spacing: -.02em; }
 .category-card p, .section-card > p { margin: 0; color: $giotto-muted; font-size: 14px; line-height: 1.55; }
+.category-card p { flex: 1; }
 .card-footer { align-items: center; display: flex; justify-content: space-between; margin-top: 20px; color: $giotto-foreground; font-size: 12px; font-weight: 600; }
 .section-card ul { display: grid; gap: 8px; margin: 18px 0 0; }
 .section-card li a { align-items: flex-start; color: $giotto-foreground; display: flex; justify-content: space-between; gap: 10px; padding: 8px 0; font-size: 14px; line-height: 1.45; }
@@ -871,6 +873,7 @@ a[href*="poweredbyzendesk"] { display: none !important; }
 .hero h1 {
   max-width: 700px;
   margin: 0 auto;
+  padding-top: 32px;
   color: $giotto-foreground;
   font-size: clamp(36px, 5vw, 58px);
   letter-spacing: -.055em;

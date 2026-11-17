@@ -6444,9 +6444,16 @@ body.search-open {
   transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 }
 
+.category-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 260px;
+  background: #f3f5f9;
+}
+
 .category-card:hover, .section-card:hover {
   border-color: #c9ced9;
-  background: #f3f5f9;
+  background: #fff;
   box-shadow: 0 10px 24px rgba(24, 36, 42, 0.07);
   transform: translateY(-2px);
   text-decoration: none;
@@ -6491,6 +6498,10 @@ body.search-open {
   color: #6b7280;
   font-size: 14px;
   line-height: 1.55;
+}
+
+.category-card p {
+  flex: 1;
 }
 
 .card-footer {
@@ -7002,6 +7013,7 @@ a[href*=poweredbyzendesk] {
 .hero h1 {
   max-width: 700px;
   margin: 0 auto;
+  padding-top: 32px;
   color: #161a23;
   font-size: clamp(36px, 5vw, 58px);
   letter-spacing: -0.055em;
