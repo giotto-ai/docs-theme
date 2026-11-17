@@ -694,12 +694,7 @@
         })
         .join("");
 
-      sidebarNav.innerHTML = `<a class="nav-article sidebar-home${
-      window.location.pathname ===
-      new URL(helpCenterPath, window.location.origin).pathname
-        ? " is-active"
-        : ""
-    }" href="${escapeHtml(helpCenterPath)}">Overview</a>${categoryMarkup}`;
+      sidebarNav.innerHTML = categoryMarkup;
     };
 
     try {

@@ -4914,7 +4914,7 @@ zd-summary-block {
   display: none !important;
 }
 
-/* Giotto docs layer: keeps Copenhagen's Zendesk helpers, with the Giotto product surface. */
+/* Giotto docs layer: keeps Zendesk helpers, with the Giotto product surface. */
 html {
   scroll-behavior: smooth;
 }
@@ -6619,5 +6619,8 @@ body.search-open {
   }
   .article-layout .article-body {
     font-size: 14px;
+  }
+  .hero h1 {
+    font-size: 42px;
   }
 }
