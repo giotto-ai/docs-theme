@@ -16,9 +16,10 @@ body {
 
 a {
   color: #4f5f8f;
+  text-decoration: none;
 
-  &:visited { color: #4f5f8f; }
-  &:hover, &:active, &:focus { color: $giotto-foreground; }
+  &:visited { color: #4f5f8f; text-decoration: none; }
+  &:hover, &:active, &:focus { color: $giotto-foreground; text-decoration: none; }
 }
 
 :focus-visible {
@@ -312,9 +313,9 @@ a {
 .article-toc { position: sticky; top: 100px; min-width: 0; padding-top: 10px; }
 .toc-label { margin: 0 0 10px; color: #8f97ab; font-size: 13px; font-weight: 500; letter-spacing: 0; text-transform: none; }
 .article-toc nav:empty { display: none; }
-.article-toc a { display: block; padding: 5px 0 5px 12px; border-left: 1px solid $giotto-border; color: $giotto-muted; font-size: 13px; line-height: 1.4; }
+.article-toc a { display: block; padding: 5px 0 5px 12px; border-left: 1px solid $giotto-border; color: $giotto-muted; font-size: 13px; line-height: 1.4; text-decoration: none; }
 .article-toc a:hover, .article-toc a:focus { border-color: $giotto-foreground; color: $giotto-foreground; text-decoration: none; }
-.article-toc a.toc-level-3 { padding-left: 24px; font-size: 12px; }
+.article-toc a.toc-level-3 { padding-left: 24px; font-size: 13px; }
 
 .article-relatives { order: 3; display: block; padding: 28px 0; border-top: 1px solid $giotto-border; }
 .article > footer { order: 4; }
@@ -525,10 +526,17 @@ a {
 }
 
 .main-content {
+  width: 100%;
   max-width: 1180px;
   min-height: calc(100vh - 68px);
   margin: 0 auto;
   padding: 32px 32px 56px;
+}
+.main-content > .article-layout {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
 }
 .main-content > .container > .article-container,
 .main-content > .article-container {
@@ -547,11 +555,12 @@ a {
 .search-panel-form input { width: 100%; height: 38px; padding: 0 12px; border: 1px solid $giotto-border; border-radius: 8px; outline: none; font-size: 14px; }
 .search-panel-form input:focus { border-color: #b8bec9; box-shadow: 0 0 0 3px $giotto-ring; }
 .search-results { min-height: 0; max-height: 52vh; margin-top: 12px; overflow-y: auto; }
+.search-popular { width: 100%; }
 .search-popular h3 { margin: 0 0 8px; color: $giotto-foreground; font-size: 13px; font-weight: 600; }
-.search-popular-list { display: grid; gap: 2px; }
-.search-popular-item { align-items: center; display: flex; justify-content: space-between; gap: 12px; padding: 9px 8px; border-radius: 7px; color: $giotto-foreground; text-decoration: none; }
-.search-popular-item:visited { color: $giotto-foreground; text-decoration: none; }
-.search-popular-item:hover, .search-popular-item:focus { background: $giotto-surface-muted; color: $giotto-foreground; text-decoration: none; }
+.search-popular-list { display: grid; width: 100%; gap: 2px; }
+.search-popular-item { align-items: center; display: flex; width: 100%; justify-content: space-between; gap: 12px; padding: 9px 8px; border-radius: 7px; color: $giotto-foreground; text-decoration: none !important; }
+.search-popular-item:visited { color: $giotto-foreground; text-decoration: none !important; }
+.search-popular-item:hover, .search-popular-item:focus { background: $giotto-surface-muted; color: $giotto-foreground; text-decoration: none !important; }
 .search-popular-item > .lucide-icon { flex: none; color: $giotto-muted; }
 .search-popular-copy { display: grid; min-width: 0; gap: 3px; }
 .search-popular-copy strong { overflow: hidden; font-size: 14px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
@@ -744,15 +753,17 @@ a[href*="poweredbyzendesk"] { display: none !important; }
   color: $giotto-muted;
   font-size: 13px;
   line-height: 1.4;
+  text-decoration: none;
 }
 
 .article-layout .article-toc a:hover,
 .article-layout .article-toc a:focus {
   border-color: $giotto-foreground;
   color: $giotto-foreground;
+  text-decoration: none;
 }
 
-.article-layout .article-toc a.toc-level-3 { padding-left: 24px; font-size: 12px; }
+.article-layout .article-toc a.toc-level-3 { padding-left: 24px; font-size: 13px; }
 
 .section-grid { gap: 24px; }
 .section-card > p { margin: 0 0 17px; }
