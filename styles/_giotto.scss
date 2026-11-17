@@ -461,10 +461,12 @@ a {
   font-size: 13px;
   line-height: 1.35;
   text-overflow: ellipsis;
+  text-decoration: none;
   white-space: nowrap;
 }
-.nav-article:hover, .nav-article.is-active { background: $giotto-surface-muted; color: $giotto-foreground; text-decoration: none; }
-.sidebar-home { margin-bottom: 8px; color: $giotto-foreground; font-weight: 500; }
+.nav-article:visited { color: $giotto-muted; text-decoration: none; }
+.nav-article:hover, .nav-article:focus, .nav-article:active, .nav-article.is-active, .nav-article.is-active:visited { background: $giotto-surface-muted; color: $giotto-foreground; font-weight: inherit; text-decoration: none; }
+.sidebar-home, .sidebar-home:visited { margin-bottom: 8px; color: $giotto-foreground; font-weight: 500; }
 .sidebar-scrim { display: none; }
 
 .page-shell { min-width: 0; background: #fff; }
@@ -545,6 +547,15 @@ a {
 .search-panel-form input { width: 100%; height: 38px; padding: 0 12px; border: 1px solid $giotto-border; border-radius: 8px; outline: none; font-size: 14px; }
 .search-panel-form input:focus { border-color: #b8bec9; box-shadow: 0 0 0 3px $giotto-ring; }
 .search-results { min-height: 0; max-height: 52vh; margin-top: 12px; overflow-y: auto; }
+.search-popular h3 { margin: 0 0 8px; color: $giotto-foreground; font-size: 13px; font-weight: 600; }
+.search-popular-list { display: grid; gap: 2px; }
+.search-popular-item { align-items: center; display: flex; justify-content: space-between; gap: 12px; padding: 9px 8px; border-radius: 7px; color: $giotto-foreground; text-decoration: none; }
+.search-popular-item:visited { color: $giotto-foreground; text-decoration: none; }
+.search-popular-item:hover, .search-popular-item:focus { background: $giotto-surface-muted; color: $giotto-foreground; text-decoration: none; }
+.search-popular-item > .lucide-icon { flex: none; color: $giotto-muted; }
+.search-popular-copy { display: grid; min-width: 0; gap: 3px; }
+.search-popular-copy strong { overflow: hidden; font-size: 14px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
+.search-popular-copy small { overflow: hidden; color: $giotto-muted; font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
 body.search-open { overflow: hidden; }
 .sr-only { @include visually-hidden; }
 

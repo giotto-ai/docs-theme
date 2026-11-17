@@ -5893,16 +5893,23 @@ a:hover, a:active, a:focus {
   font-size: 13px;
   line-height: 1.35;
   text-overflow: ellipsis;
+  text-decoration: none;
   white-space: nowrap;
 }
 
-.nav-article:hover, .nav-article.is-active {
-  background: #f3f5f9;
-  color: #161a23;
+.nav-article:visited {
+  color: #6b7280;
   text-decoration: none;
 }
 
-.sidebar-home {
+.nav-article:hover, .nav-article:focus, .nav-article:active, .nav-article.is-active, .nav-article.is-active:visited {
+  background: #f3f5f9;
+  color: #161a23;
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+.sidebar-home, .sidebar-home:visited {
   margin-bottom: 8px;
   color: #161a23;
   font-weight: 500;
@@ -6084,6 +6091,67 @@ a:hover, a:active, a:focus {
   max-height: 52vh;
   margin-top: 12px;
   overflow-y: auto;
+}
+
+.search-popular h3 {
+  margin: 0 0 8px;
+  color: #161a23;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.search-popular-list {
+  display: grid;
+  gap: 2px;
+}
+
+.search-popular-item {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 8px;
+  border-radius: 7px;
+  color: #161a23;
+  text-decoration: none;
+}
+
+.search-popular-item:visited {
+  color: #161a23;
+  text-decoration: none;
+}
+
+.search-popular-item:hover, .search-popular-item:focus {
+  background: #f3f5f9;
+  color: #161a23;
+  text-decoration: none;
+}
+
+.search-popular-item > .lucide-icon {
+  flex: none;
+  color: #6b7280;
+}
+
+.search-popular-copy {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.search-popular-copy strong {
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.search-popular-copy small {
+  overflow: hidden;
+  color: #6b7280;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 body.search-open {

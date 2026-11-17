@@ -678,6 +678,7 @@
     const helpCenterPath = shell.dataset.helpCenterPath || `/hc/${locale}`;
     const openSectionsKey = "giotto-docs-open-sections-v2";
     let navigation = { categories: [], sections: [], articles: [] };
+    let popularArticles = [];
 
     const storedOpenSections = () => {
       try {
@@ -799,14 +800,27 @@
         getCollection(`${prefix}/categories.json?per_page=100`),
         getCollection(`${prefix}/sections.json?per_page=100`),
         getCollection(`${prefix}/articles.json?per_page=100`),
+        getJson(
+          `${prefix}/articles.json?per_page=4&sort_by=vote_sum&sort_order=desc`
+        ).then((payload) => payload.articles || []),
       ]);
-      const [categoriesResult, sectionsResult, articlesResult] = results;
+      const [
+        categoriesResult,
+        sectionsResult,
+        articlesResult,
+        popularArticlesResult,
+      ] = results;
       const categories =
         categoriesResult.status === "fulfilled" ? categoriesResult.value : [];
       const sections =
         sectionsResult.status === "fulfilled" ? sectionsResult.value : [];
       const articles =
         articlesResult.status === "fulfilled" ? articlesResult.value : [];
+      popularArticles =
+        popularArticlesResult.status === "fulfilled" &&
+        popularArticlesResult.value.length
+          ? popularArticlesResult.value
+          : articles.slice(0, 4);
 
       navigation = { categories, sections, articles };
       if (categories.length) renderSidebar();
@@ -814,7 +828,12 @@
 
       results.forEach((result, index) => {
         if (result.status === "rejected") {
-          const collection = ["categories", "sections", "articles"][index];
+          const collection = [
+            "categories",
+            "sections",
+            "articles",
+            "popular articles",
+          ][index];
           console.warn(
             `Giotto ${collection} could not load Help Center data:`,
             result.reason?.message || result.reason
@@ -868,10 +887,33 @@
       searchDialog.hidden = true;
       document.body.classList.remove("search-open");
     };
+
+    const renderPopularArticles = () => {
+      if (!searchResults) return;
+      if (!popularArticles.length) {
+        searchResults.innerHTML = "";
+        return;
+      }
+
+      searchResults.innerHTML = `<section class="search-popular" aria-labelledby="popular-search-title"><h3 id="popular-search-title">Popular articles</h3><div class="search-popular-list">${popularArticles
+      .map((article) => {
+        const href = articleUrl(article, helpCenterPath);
+        return `<a class="search-popular-item" href="${escapeHtml(
+          href
+        )}"><span class="search-popular-copy"><strong>${escapeHtml(
+          article.title
+        )}</strong><small>${escapeHtml(
+          article.section_name || "Documentation"
+        )}</small></span>${icon("arrow")}</a>`;
+      })
+      .join("")}</div></section>`;
+    };
+
     const openSearch = () => {
       if (!searchDialog || !searchInput) return;
       searchDialog.hidden = false;
       document.body.classList.add("search-open");
+      if (!searchInput.value.trim()) renderPopularArticles();
       searchInput.focus();
     };
 
@@ -939,6 +981,10 @@
 
     searchInput?.addEventListener("input", () => {
       window.clearTimeout(searchTimer);
+      if (!searchInput.value.trim()) {
+        renderPopularArticles();
+        return;
+      }
       searchTimer = window.setTimeout(
         () => searchArticles(searchInput.value),
         220
