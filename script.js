@@ -626,13 +626,21 @@
   }
 
   function removeZendeskBranding() {
-    document
-      .querySelectorAll("a[href*='poweredbyzendesk']")
-      .forEach((link) => {
-        const wrapper = link.closest("footer") || link.parentElement;
-        if (wrapper && wrapper !== document.body) wrapper.remove();
-        else link.remove();
-      });
+    const removeLinks = () => {
+      document
+        .querySelectorAll("a[href*='poweredbyzendesk']")
+        .forEach((link) => {
+          const wrapper = link.closest("footer") || link.parentElement;
+          if (wrapper && wrapper !== document.body) wrapper.remove();
+          else link.remove();
+        });
+    };
+
+    removeLinks();
+    if (!document.body) return;
+    const observer = new MutationObserver(removeLinks);
+    observer.observe(document.body, { childList: true, subtree: true });
+    window.setTimeout(() => observer.disconnect(), 10000);
   }
 
   window.addEventListener("DOMContentLoaded", async () => {
