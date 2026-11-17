@@ -23,7 +23,7 @@ if (!themeId) {
   process.exit(1);
 }
 
-zcli(`themes:publish --themeId=${themeId}`);
+zcli(`themes:publish --themeId=${themeId}`, false);
 
 const { themes } = zcli(`themes:list --brandId=${brandId}`);
 
