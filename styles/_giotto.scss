@@ -773,9 +773,17 @@ a[href*="poweredbyzendesk"] { display: none !important; }
 .article-layout .article-footer {
   width: 100%;
   max-width: none;
+  align-items: stretch;
+  justify-content: stretch;
   margin: 44px 0 0;
   padding: 0;
   border-top: 1px solid $giotto-border;
+}
+
+.article-layout .article-footer > * {
+  width: 100%;
+  max-width: none;
+  justify-self: stretch;
 }
 
 .article-layout .article-footer,
