@@ -529,6 +529,7 @@ a {
 .search-panel-form input:focus { border-color: #b8bec9; box-shadow: 0 0 0 3px $giotto-ring; }
 .search-results { min-height: 0; max-height: 52vh; margin-top: 12px; overflow-y: auto; }
 body.search-open { overflow: hidden; }
+.sr-only { @include visually-hidden; }
 
 .page-intro { max-width: 760px; margin-bottom: 42px; }
 .eyebrow { margin: 0 0 12px; color: #8f97ab; font-size: 13px; font-weight: 500; letter-spacing: 0; text-transform: none; }
@@ -566,7 +567,7 @@ body.search-open { overflow: hidden; }
 .search-page-form input:focus { border-color: #b8bec9; box-shadow: 0 0 0 3px $giotto-ring; }
 
 .hero-search { position: relative; max-width: 620px; margin: 0 auto; }
-.hero-search .search { margin: 0; }
+.hero-search .search { display: block; margin: 0; border: 0; }
 .hero-search-icon { position: absolute; top: 18px; right: 18px; z-index: 1; color: $giotto-muted; pointer-events: none; }
 .hero-search input[type="search"] { height: 54px; padding-right: 52px; }
 .home-explore { padding-top: 70px; }

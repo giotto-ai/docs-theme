@@ -929,7 +929,10 @@
 
   // Define variables for search field
   let searchFormFilledClassName = "search-has-value";
-  let searchFormSelector = "form[role='search']";
+  // The global docs dialog has its own async search and must not receive the
+  // legacy Copenhagen clear-button enhancement. That enhancement assumes a
+  // `.search` wrapper and otherwise renders a stray button below the input.
+  let searchFormSelector = "form[role='search']:not(#global-search-form)";
 
   // Clear the search input, and then return focus to it
   function clearSearchInput(event) {
