@@ -6447,7 +6447,6 @@ body.search-open {
 .category-card {
   display: flex;
   flex-direction: column;
-  min-height: 260px;
   background: #fff;
 }
 
@@ -6927,6 +6926,21 @@ a[href*=poweredbyzendesk] {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.article-layout .article-footer .article-relatives,
+.article-layout .article-footer .article-relatives > .related-articles,
+.article-layout .article-footer .article-relatives > ul,
+.article-layout .article-footer .article-relatives ul {
+  width: 100%;
+  max-width: none;
+}
+
+.article-layout .article-footer .article-relatives > * {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
 }
 
 .article-layout .article-footer > section {
