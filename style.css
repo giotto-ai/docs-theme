@@ -5958,9 +5958,9 @@ a:hover, a:active, a:focus {
 }
 
 .topbar-auth-button {
-  min-height: 34px;
-  padding: 0 12px;
-  font-size: 12px;
+  min-height: 40px;
+  padding: 0 16px;
+  font-size: 14px;
 }
 
 .shortcut {
@@ -6437,8 +6437,9 @@ body.search-open {
     margin-left: 8px;
   }
   .topbar-auth-button {
-    padding: 0 9px;
-    font-size: 12px;
+    min-height: 36px;
+    padding: 0 10px;
+    font-size: 13px;
   }
   .topbar-actions .button-primary, .topbar-actions .split-button button:hover, .split-button .topbar-actions button:hover, .topbar-actions .section-subscribe button[data-selected=true], .section-subscribe .topbar-actions button[data-selected=true], .topbar-actions .article-subscribe button[data-selected=true], .article-subscribe .topbar-actions button[data-selected=true], .topbar-actions .requests-table-toolbar .organization-subscribe button[data-selected=true], .requests-table-toolbar .organization-subscribe .topbar-actions button[data-selected=true], .topbar-actions .subscriptions-subscribe button[data-selected=true], .subscriptions-subscribe .topbar-actions button[data-selected=true] {
     max-width: 136px;

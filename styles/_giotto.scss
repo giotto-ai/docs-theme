@@ -486,7 +486,7 @@ a {
 .topbar-search-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .topbar-search .shortcut { margin-left: auto; }
 .topbar-actions { align-items: center; display: flex; flex: none; gap: 8px; margin-left: 32px; }
-.topbar-auth-button { min-height: 34px; padding: 0 12px; font-size: 12px; }
+.topbar-auth-button { min-height: 40px; padding: 0 16px; font-size: 14px; }
 
 .shortcut {
   align-items: center;
@@ -594,7 +594,7 @@ body.search-open { overflow: hidden; }
   .topbar { min-height: 60px; padding: 0 16px; }
   .topbar-search { flex: 1 1 auto; width: auto; max-width: none; }
   .topbar-actions { gap: 6px; margin-left: 8px; }
-  .topbar-auth-button { padding: 0 9px; font-size: 12px; }
+  .topbar-auth-button { min-height: 36px; padding: 0 10px; font-size: 13px; }
   .topbar-actions .button-primary { max-width: 136px; overflow: hidden; text-overflow: ellipsis; }
   .main-content { padding: 48px 20px 72px; }
   .category-grid, .section-grid { grid-template-columns: 1fr; }
