@@ -416,6 +416,23 @@
 
     if (!articleBody) return;
 
+    const summary = document.querySelector(".article-summary");
+    const firstParagraph = articleBody.querySelector("p");
+
+    if (summary && firstParagraph) {
+      const text = (firstParagraph.textContent || "").replace(/\s+/g, " ").trim();
+      const maxLength = 240;
+
+      if (text) {
+        if (text.length <= maxLength) {
+          summary.textContent = text;
+        } else {
+          const truncated = text.slice(0, maxLength).replace(/\s+\S*$/, "").trim();
+          summary.textContent = `${truncated}…`;
+        }
+      }
+    }
+
     if (toc) {
       const headings = articleBody.querySelectorAll("h2, h3");
       const usedIds = new Set();
@@ -627,13 +644,11 @@
 
   function removeZendeskBranding() {
     const removeLinks = () => {
-      document
-        .querySelectorAll("a[href*='poweredbyzendesk']")
-        .forEach((link) => {
-          const wrapper = link.closest("footer") || link.parentElement;
-          if (wrapper && wrapper !== document.body) wrapper.remove();
-          else link.remove();
-        });
+      document.querySelectorAll("a[href*='poweredbyzendesk']").forEach((link) => {
+        const wrapper = link.closest("footer") || link.parentElement;
+        if (wrapper && wrapper !== document.body) wrapper.remove();
+        else link.remove();
+      });
     };
 
     removeLinks();
