@@ -41,6 +41,19 @@ http://127.0.0.1:4173/oauth/callback
 
 Start the authorization flow at [http://127.0.0.1:4173/oauth/start](http://127.0.0.1:4173/oauth/start). The `.env.local` file is ignored by Git and must never be committed.
 
+The GitHub Actions deployment uses OAuth client credentials through `zcli`. Add these repository secrets before enabling the Lighthouse workflow:
+
+```text
+subdomain = giottoai
+brand_id = 34687713949074
+zendesk_oauth_client_id = giotto_theme
+zendesk_oauth_client_secret = the OAuth client secret
+```
+
+The OAuth client must allow the `read` and `write` scopes required by `zcli` for theme import and publication. The client secret must only be stored in GitHub Actions secrets or another secure secret store.
+
+Lighthouse is disabled by default while the end-user test account is not configured. To enable it later, create the `end_user_email` and `end_user_password` repository secrets and set the repository variable `RUN_LIGHTHOUSE` to `true`.
+
 The Copenhagen theme for Help Center consists of:
 - [Manifest file](#manifest-file)
 - [Set of templates](#templates)

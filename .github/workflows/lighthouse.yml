@@ -22,11 +22,14 @@ jobs:
       - name: Upload theme
         run: node ./bin/theme-upload.js
         env:
-          ZENDESK_EMAIL: ${{ secrets.zendesk_email }}
-          ZENDESK_API_TOKEN: ${{ secrets.zendesk_token }}
           ZENDESK_SUBDOMAIN: ${{ secrets.subdomain }}
+          ZENDESK_OAUTH_CLIENT_ID: ${{ secrets.zendesk_oauth_client_id }}
+          ZENDESK_OAUTH_CLIENT_SECRET: ${{ secrets.zendesk_oauth_client_secret }}
           BRAND_ID: ${{ secrets.brand_id }}
       - name: Audit URLs using Lighthouse
+        # Temporarily disabled until an end-user test account is configured.
+        # Set the repository variable RUN_LIGHTHOUSE=true to enable it.
+        if: ${{ vars.RUN_LIGHTHOUSE == 'true' }}
         run: yarn test-a11y
         env:
           end_user_email: ${{ secrets.end_user_email }}
