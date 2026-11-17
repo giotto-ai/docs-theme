@@ -5958,8 +5958,8 @@ a:hover, a:active, a:focus {
 }
 
 .topbar-auth-button {
-  min-height: 40px;
-  padding: 0 16px;
+  min-height: 38px;
+  padding: 0 14px;
   font-size: 14px;
 }
 
@@ -6046,7 +6046,7 @@ a:hover, a:active, a:focus {
 
 .search-panel-form input {
   width: 100%;
-  height: 42px;
+  height: 38px;
   padding: 0 12px;
   border: 1px solid #e7e9f0;
   border-radius: 8px;
@@ -6341,10 +6341,6 @@ body.search-open {
   padding-right: 52px;
 }
 
-.home-explore {
-  padding-top: 70px;
-}
-
 .section-heading {
   align-items: baseline;
   display: flex;
@@ -6566,7 +6562,13 @@ body.search-open {
   width: 100%;
   max-width: none;
   margin: 44px 0 0;
+  padding: 0;
   border-top: 1px solid #e7e9f0;
+}
+
+.article-layout .article-footer > section {
+  padding: 28px 0;
+  border-bottom: 1px solid #e7e9f0;
 }
 
 .article-layout .article-footer > .related-articles {
