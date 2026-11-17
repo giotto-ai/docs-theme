@@ -840,27 +840,20 @@
         getCollection(`${prefix}/categories.json?per_page=100`),
         getCollection(`${prefix}/sections.json?per_page=100`),
         getCollection(`${prefix}/articles.json?per_page=100`),
-        getJson(
-          `${prefix}/articles.json?per_page=4&sort_by=vote_sum&sort_order=desc`
-        ).then((payload) => payload.articles || []),
       ]);
-      const [
-        categoriesResult,
-        sectionsResult,
-        articlesResult,
-        popularArticlesResult,
-      ] = results;
+      const [categoriesResult, sectionsResult, articlesResult] = results;
       const categories =
         categoriesResult.status === "fulfilled" ? categoriesResult.value : [];
       const sections =
         sectionsResult.status === "fulfilled" ? sectionsResult.value : [];
       const articles =
         articlesResult.status === "fulfilled" ? articlesResult.value : [];
-      popularArticles =
-        popularArticlesResult.status === "fulfilled" &&
-        popularArticlesResult.value.length
-          ? popularArticlesResult.value
-          : articles.slice(0, 4);
+      popularArticles = articles
+        .slice()
+        .sort(
+          (a, b) => (Number(b.vote_sum) || 0) - (Number(a.vote_sum) || 0)
+        )
+        .slice(0, 4);
 
       navigation = { categories, sections, articles };
       renderSidebar();
@@ -868,12 +861,7 @@
 
       results.forEach((result, index) => {
         if (result.status === "rejected") {
-          const collection = [
-            "categories",
-            "sections",
-            "articles",
-            "popular articles",
-          ][index];
+          const collection = ["categories", "sections", "articles"][index];
           console.warn(
             `Giotto ${collection} could not load Help Center data:`,
             result.reason?.message || result.reason
