@@ -6151,7 +6151,7 @@ html.giotto-loading .article-layout {
 }
 
 .content-skeleton-article {
-  display: grid;
+  display: none;
   grid-template-columns: minmax(0, 1fr) minmax(160px, 240px);
   align-items: start;
   gap: 32px;

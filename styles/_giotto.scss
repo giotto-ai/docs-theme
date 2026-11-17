@@ -586,7 +586,7 @@ html.giotto-loading .article-layout { visibility: hidden; }
 .skeleton-home-summary-short { width: min(78%, 440px); margin-top: 8px; }
 .skeleton-home-search { width: min(100%, 620px); height: 54px; margin-top: 30px !important; border-radius: 12px; }
 .content-skeleton-article {
-  display: grid;
+  display: none;
   grid-template-columns: minmax(0, 1fr) minmax(160px, 240px);
   align-items: start;
   gap: 32px;
