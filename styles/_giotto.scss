@@ -284,6 +284,7 @@ a {
 .article-body h2 { scroll-margin-top: 92px; margin: 42px 0 12px; font-size: 23px; line-height: 1.2; }
 .article-body h3 { scroll-margin-top: 92px; margin: 30px 0 10px; font-size: 18px; line-height: 1.3; }
 .article-body img { height: auto; max-width: 100%; border: 1px solid #e3e5eb; border-radius: 8px; }
+.article-body .external-link-icon { display: inline-block; width: 14px; height: 14px; margin-left: 4px; vertical-align: -.15em; }
 .article-body pre { position: relative; overflow: auto; margin: 24px 0; padding: 18px; border: 1px solid #252d33; border-radius: 8px; background: $giotto-primary; color: #f8fafc; font-size: 13px; line-height: 1.6; }
 .article-body pre code { font-size: inherit; }
 .article-body :not(pre) > code { padding: 2px 5px; border-radius: 5px; background: $giotto-surface-muted; font-size: 13px; }
@@ -535,6 +536,8 @@ body.search-open { overflow: hidden; }
 .category-card, .section-card { display: block; padding: 22px; border: 1px solid $giotto-border; border-radius: 10px; background: #fff; box-shadow: 0 0 0 1px rgba(22, 26, 35, .02); transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
 .category-card:hover, .section-card:hover { border-color: #c9ced9; background: $giotto-surface-muted; box-shadow: 0 10px 24px rgba(24, 36, 42, .07); transform: translateY(-2px); text-decoration: none; }
 .card-eyebrow { color: $giotto-muted; font-size: 12px; font-weight: 500; text-transform: none; }
+.badge { align-items: center; display: inline-flex; width: fit-content; min-height: 20px; padding: 2px 8px; border: 1px solid transparent; border-radius: 999px; font-size: 12px; font-weight: 600; line-height: 1; white-space: nowrap; }
+.badge-secondary { border-color: $giotto-border; background: $giotto-surface-muted; color: $giotto-muted; }
 .category-card h3, .section-card h2 { margin: 10px 0 8px; color: $giotto-foreground; font-size: 16px; letter-spacing: -.02em; }
 .category-card p, .section-card > p { margin: 0; color: $giotto-muted; font-size: 14px; line-height: 1.55; }
 .card-footer { align-items: center; display: flex; justify-content: space-between; margin-top: 20px; color: $giotto-foreground; font-size: 12px; font-weight: 600; }
@@ -556,6 +559,9 @@ body.search-open { overflow: hidden; }
 .result-item small { display: block; margin: 0 0 7px; color: $giotto-muted; font-size: 12px; }
 .empty-state { padding: 42px 0; color: $giotto-muted; font-size: 14px; }
 .search-result-count { margin: 0; color: $giotto-muted; font-size: 13px; }
+.search-page-form { margin: 0 0 24px; }
+.search-page-form input { width: 100%; height: 46px; padding: 0 14px; border: 1px solid $giotto-border; border-radius: 8px; outline: none; font-size: 14px; }
+.search-page-form input:focus { border-color: #b8bec9; box-shadow: 0 0 0 3px $giotto-ring; }
 
 .hero-search { position: relative; max-width: 620px; margin: 0 auto; }
 .hero-search .search { margin: 0; }

@@ -473,7 +473,21 @@
       pre.appendChild(button);
     });
 
-    articleBody.querySelectorAll("a[target='_blank']").forEach((anchor) => {
+    articleBody.querySelectorAll("a[href]").forEach((anchor) => {
+      const href = anchor.getAttribute("href") || "";
+      if (/^(mailto:|tel:|javascript:|#)/i.test(href)) return;
+      let isExternal = false;
+
+      try {
+        isExternal =
+          new URL(href, window.location.href).origin !== window.location.origin;
+      } catch {
+        isExternal = false;
+      }
+
+      if (!isExternal) return;
+      anchor.target = "_blank";
+      anchor.rel = "noreferrer noopener";
       if (anchor.querySelector("svg")) return;
 
       const icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -697,16 +711,59 @@
       sidebarNav.innerHTML = categoryMarkup;
     };
 
+    const renderCategoryArticleCounts = () => {
+      const categoryBySection = new Map(
+        navigation.sections.map((section) => [
+          String(section.id),
+          String(section.category_id),
+        ])
+      );
+      const counts = new Map();
+
+      navigation.articles.forEach((article) => {
+        const categoryId = categoryBySection.get(String(article.section_id));
+        if (categoryId) counts.set(categoryId, (counts.get(categoryId) || 0) + 1);
+      });
+
+      document.querySelectorAll("[data-category-id]").forEach((card) => {
+        const count = counts.get(String(card.dataset.categoryId)) || 0;
+        const label = card.querySelector(".category-card-count");
+        if (label) label.textContent = `${count} articles`;
+      });
+    };
+
     try {
       const prefix = `/api/v2/help_center/${encodeURIComponent(locale)}`;
-      const [categories, sections, articles] = await Promise.all([
+      const results = await Promise.allSettled([
         getCollection(`${prefix}/categories.json?per_page=100`),
         getCollection(`${prefix}/sections.json?per_page=100`),
         getCollection(`${prefix}/articles.json?per_page=100`),
       ]);
+      const [categoriesResult, sectionsResult, articlesResult] = results;
+      const categories =
+        categoriesResult.status === "fulfilled" ? categoriesResult.value : [];
+      const sections =
+        sectionsResult.status === "fulfilled" ? sectionsResult.value : [];
+      const articles =
+        articlesResult.status === "fulfilled" ? articlesResult.value : [];
+
       navigation = { categories, sections, articles };
-      renderSidebar();
+      if (categories.length) renderSidebar();
+      renderCategoryArticleCounts();
+
+      results.forEach((result, index) => {
+        if (result.status === "rejected") {
+          const collection = ["categories", "sections", "articles"][index];
+          console.warn(
+            `Giotto ${collection} could not load Help Center data:`,
+            result.reason?.message || result.reason
+          );
+        }
+      });
     } catch (error) {
+      sidebarNav.innerHTML = `<a class="nav-article sidebar-home" href="${escapeHtml(
+      helpCenterPath
+    )}">Overview</a>`;
       console.warn(
         "Giotto navigation could not load Help Center data:",
         error.message

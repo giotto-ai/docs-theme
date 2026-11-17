@@ -2,6 +2,11 @@
   <p class="eyebrow">Search</p>
   <h1>Search results</h1>
 
+  <form class="search-page-form" action="{{page_path 'help_center'}}/search" method="get" role="search">
+    <label class="sr-only" for="page-search-input">Search Giotto Docs</label>
+    <input id="page-search-input" name="query" type="search" value="{{query}}" placeholder="Search Giotto Docs" autocomplete="off" />
+  </form>
+
   {{generative_answers}}
 
   {{#if results}}
@@ -10,7 +15,7 @@
       {{#each results}}
         <a class="result-item" href="{{url}}"{{#if is_external}} target="_blank" rel="noreferrer noopener"{{/if}}>
           <h2>{{title}}</h2>
-          <small>{{type}}</small>
+          <small>{{#if meta}}{{meta}}{{else}}{{type}}{{/if}}</small>
           <p>{{text}}</p>
         </a>
       {{/each}}

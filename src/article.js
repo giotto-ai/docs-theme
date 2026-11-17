@@ -63,7 +63,21 @@ window.addEventListener("DOMContentLoaded", () => {
     pre.appendChild(button);
   });
 
-  articleBody.querySelectorAll("a[target='_blank']").forEach((anchor) => {
+  articleBody.querySelectorAll("a[href]").forEach((anchor) => {
+    const href = anchor.getAttribute("href") || "";
+    if (/^(mailto:|tel:|javascript:|#)/i.test(href)) return;
+    let isExternal = false;
+
+    try {
+      isExternal =
+        new URL(href, window.location.href).origin !== window.location.origin;
+    } catch {
+      isExternal = false;
+    }
+
+    if (!isExternal) return;
+    anchor.target = "_blank";
+    anchor.rel = "noreferrer noopener";
     if (anchor.querySelector("svg")) return;
 
     const icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");

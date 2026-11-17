@@ -5401,6 +5401,14 @@ a:hover, a:active, a:focus {
   border-radius: 8px;
 }
 
+.article-body .external-link-icon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-left: 4px;
+  vertical-align: -0.15em;
+}
+
 .article-body pre {
   position: relative;
   overflow: auto;
@@ -6111,6 +6119,26 @@ body.search-open {
   text-transform: none;
 }
 
+.badge {
+  align-items: center;
+  display: inline-flex;
+  width: fit-content;
+  min-height: 20px;
+  padding: 2px 8px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.badge-secondary {
+  border-color: #e7e9f0;
+  background: #f3f5f9;
+  color: #6b7280;
+}
+
 .category-card h3, .section-card h2 {
   margin: 10px 0 8px;
   color: #161a23;
@@ -6241,6 +6269,25 @@ body.search-open {
   margin: 0;
   color: #6b7280;
   font-size: 13px;
+}
+
+.search-page-form {
+  margin: 0 0 24px;
+}
+
+.search-page-form input {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid #e7e9f0;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-page-form input:focus {
+  border-color: #b8bec9;
+  box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.35);
 }
 
 .hero-search {
