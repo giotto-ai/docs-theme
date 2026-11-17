@@ -479,7 +479,12 @@
     }
 
     articleBody.querySelectorAll("pre").forEach((pre) => {
-      if (pre.querySelector(".copy-code-button")) return;
+      if (pre.closest(".code-block")) return;
+
+      const codeBlock = document.createElement("div");
+      codeBlock.className = "code-block";
+      pre.parentNode.insertBefore(codeBlock, pre);
+      codeBlock.appendChild(pre);
 
       const button = document.createElement("button");
       button.type = "button";
@@ -499,7 +504,7 @@
           button.textContent = "Copy";
         }, 1600);
       });
-      pre.appendChild(button);
+      codeBlock.appendChild(button);
     });
 
     articleBody.querySelectorAll("a[href]").forEach((anchor) => {

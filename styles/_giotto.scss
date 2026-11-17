@@ -342,7 +342,9 @@ a {
 .related-articles li a::after { flex: none; color: $giotto-muted; content: "→"; font-size: 18px; line-height: 1; }
 .related-articles li a:hover { text-decoration: none; }
 
-.copy-code-button { position: absolute; top: 10px; right: 10px; min-height: 30px; padding: 0 10px; border: 1px solid rgba(248, 250, 252, .2); border-radius: 6px; background: rgba(11, 18, 21, .8); color: #f8fafc; font-size: 12px; }
+.article-body .code-block { position: relative; min-width: 0; margin: 22px 0; }
+.article-body .code-block pre { position: relative; margin: 0; padding: 18px 76px 18px 18px; }
+.copy-code-button { position: absolute; top: 10px; right: 10px; z-index: 1; min-height: 30px; padding: 0 10px; border: 1px solid rgba(248, 250, 252, .2); border-radius: 6px; background: rgba(11, 18, 21, .8); color: #f8fafc; font-size: 12px; }
 .copy-code-button:hover, .copy-code-button:focus { background: rgba(11, 18, 21, .95); }
 
 @media (max-width: 1023px) {
