@@ -87,7 +87,7 @@ function removeZendeskBranding() {
   window.setTimeout(() => observer.disconnect(), 10000);
 }
 
-window.addEventListener("DOMContentLoaded", async () => {
+const initDocsShell = async () => {
   removeZendeskBranding();
   const shell = document.querySelector("#app-shell");
   const sidebar = document.querySelector("#docs-sidebar");
@@ -105,6 +105,23 @@ window.addEventListener("DOMContentLoaded", async () => {
   const openSectionsKey = "giotto-docs-open-sections-v2";
   let navigation = { categories: [], sections: [], articles: [] };
   let popularArticles = [];
+  let loadingTimeout;
+
+  const releaseLoadingState = () => {
+    window.clearTimeout(loadingTimeout);
+    document.documentElement.classList.remove("giotto-loading");
+  };
+
+  loadingTimeout = window.setTimeout(() => {
+    releaseLoadingState();
+    if (!sidebarNav.classList.contains("is-loaded")) {
+      sidebarNav.innerHTML = `<a class="nav-article sidebar-home" href="${escapeHtml(
+        helpCenterPath
+      )}">Overview</a>`;
+      sidebarNav.classList.add("is-loaded");
+      sidebarNav.setAttribute("aria-busy", "false");
+    }
+  }, 2500);
 
   const storedOpenSections = () => {
     try {
@@ -298,7 +315,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     );
   }
 
-  document.documentElement.classList.remove("giotto-loading");
+  releaseLoadingState();
 
   sidebarNav.addEventListener("click", (event) => {
     const toggle = event.target.closest("[data-section-toggle]");
@@ -446,4 +463,10 @@ window.addEventListener("DOMContentLoaded", async () => {
       return;
     }
   });
-});
+};
+
+if (document.readyState === "loading") {
+  window.addEventListener("DOMContentLoaded", initDocsShell, { once: true });
+} else {
+  initDocsShell();
+}
