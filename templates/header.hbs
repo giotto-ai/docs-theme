@@ -44,8 +44,8 @@
             <svg class="lucide-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
           </button>
         </div>
-        <form id="global-search-form" class="search-panel-form" action="{{page_path 'help_center'}}/search" method="get" role="search">
-          <label class="sr-only" for="dialog-search-input">Search Giotto Docs</label>
+        <form id="global-search-form" class="search-panel-form" action="{{page_path 'help_center'}}/search" method="get">
+          <label class="visibility-hidden" for="dialog-search-input">Search Giotto Docs</label>
           <input id="dialog-search-input" name="query" type="search" placeholder="Search articles, APIs, and tutorials" autocomplete="off" />
         </form>
         <div id="search-results" class="search-results" aria-live="polite"></div>
