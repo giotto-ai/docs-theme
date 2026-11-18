@@ -413,9 +413,10 @@ summary { cursor: pointer; }
 .app-shell {
   display: grid;
   grid-template-columns: 280px minmax(0, 1fr);
+  height: 100vh;
   min-height: 100vh;
   min-width: 0;
-  overflow-x: clip;
+  overflow: hidden;
   background: #fff;
 }
 
@@ -524,7 +525,14 @@ summary { cursor: pointer; }
 .sidebar-home, .sidebar-home:visited { margin-bottom: 8px; color: $giotto-foreground; font-weight: 500; }
 .sidebar-scrim { display: none; }
 
-.page-shell { min-width: 0; background: #fff; }
+.page-shell {
+  min-width: 0;
+  min-height: 0;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #fff;
+}
 .topbar {
   position: sticky;
   top: 0;
