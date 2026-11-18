@@ -500,6 +500,9 @@ summary { cursor: pointer; }
   align-items: center;
   display: flex;
   justify-content: flex-start;
+  width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
   min-height: 68px;
   padding: 0 32px;
   border-bottom: 1px solid rgba(231, 233, 240, .9);
@@ -527,7 +530,7 @@ summary { cursor: pointer; }
 .topbar-search .lucide-icon { flex: none; }
 .topbar-search-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .topbar-search .shortcut { margin-left: auto; }
-.topbar-actions { align-items: center; display: flex; flex: none; gap: 8px; margin-left: 32px; }
+.topbar-actions { align-items: center; display: flex; flex: 0 0 auto; min-width: 0; gap: 8px; margin-left: 32px; }
 .topbar-auth-button { min-height: 38px; padding: 0 14px; font-size: 14px; }
 
 .shortcut {
@@ -719,9 +722,9 @@ a[href*="poweredbyzendesk"] { display: none !important; }
   .sidebar-close, .menu-trigger { display: inline-grid; }
   .menu-trigger { margin-right: 10px; }
   .topbar { min-height: 60px; padding: 0 16px; }
-  .topbar-search { flex: 1 1 auto; width: auto; min-width: 0; max-width: none; }
+  .topbar-search { flex: 1 1 0; width: auto; min-width: 0; max-width: none; }
   .topbar-actions { gap: 6px; margin-left: 8px; }
-  .topbar-auth-button { flex: 0 0 auto; min-height: 36px; padding: 0 8px; font-size: 12px; }
+  .topbar-auth-button { flex: 0 0 auto; min-width: 0; min-height: 36px; padding: 0 8px; font-size: 12px; }
   .topbar-actions .button-primary { max-width: none; overflow: visible; text-overflow: clip; }
   .main-content { padding: 48px 20px 72px; }
   .category-grid, .section-grid { grid-template-columns: 1fr; }
