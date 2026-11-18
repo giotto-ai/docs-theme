@@ -6018,11 +6018,13 @@ summary {
 }
 
 .page-shell {
+  display: flex;
+  flex-direction: column;
   min-width: 0;
   min-height: 0;
   height: 100vh;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
   background: #fff;
 }
 
@@ -6032,6 +6034,7 @@ summary {
   z-index: 5;
   align-items: center;
   display: flex;
+  flex: 0 0 auto;
   justify-content: flex-start;
   width: 100%;
   min-width: 0;
@@ -6118,10 +6121,13 @@ summary {
 }
 
 .main-content {
+  flex: 1 1 auto;
   width: 100%;
   max-width: 1180px;
-  min-height: calc(100vh - 68px);
+  min-height: 0;
   margin: 0 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   padding: 32px 32px 56px;
 }
 
