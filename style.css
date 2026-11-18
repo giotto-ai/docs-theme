@@ -6055,6 +6055,10 @@ summary {
   margin-left: 32px;
 }
 
+.topbar-actions > a {
+  width: auto;
+}
+
 .topbar-auth-button {
   min-height: 38px;
   padding: 0 14px;

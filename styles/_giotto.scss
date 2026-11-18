@@ -538,6 +538,7 @@ summary { cursor: pointer; }
 .topbar-search-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .topbar-search .shortcut { margin-left: auto; }
 .topbar-actions { align-items: center; display: flex; flex: 0 0 auto; min-width: 0; gap: 8px; margin-left: 32px; }
+.topbar-actions > a { width: auto; }
 .topbar-auth-button { min-height: 38px; padding: 0 14px; font-size: 14px; }
 
 .shortcut {
