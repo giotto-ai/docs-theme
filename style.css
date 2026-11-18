@@ -6844,6 +6844,9 @@ a[href*=poweredbyzendesk] {
   .app-shell {
     display: block;
   }
+  .sidebar-topline {
+    min-height: 60px;
+  }
   .docs-sidebar {
     position: fixed;
     inset: 0 auto 0 0;
