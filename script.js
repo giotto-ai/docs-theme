@@ -739,49 +739,60 @@
         articlesBySection.set(String(article.section_id), articles);
       });
 
+      const renderSection = (section) => {
+        const articles = articlesBySection.get(String(section.id)) || [];
+        const currentSection = isCurrentUrl(sectionUrl(section, helpCenterPath));
+        const currentArticle = articles.some((article) =>
+          isCurrentUrl(articleUrl(article, helpCenterPath))
+        );
+        const expanded =
+          openSections.has(String(section.id)) ||
+          currentSection ||
+          currentArticle;
+
+        return `<div class="nav-section"><button class="nav-section-toggle" type="button" data-section-toggle="${escapeHtml(
+        section.id
+      )}" aria-expanded="${expanded}"><span class="nav-section-label">${escapeHtml(
+        section.name
+      )}</span><span class="nav-chevron">${icon(
+        "chevron"
+      )}</span></button><div class="nav-articles" data-section-articles="${escapeHtml(
+        section.id
+      )}"${expanded ? "" : " hidden"}>${articles
+        .map((article) => {
+          const href = articleUrl(article, helpCenterPath);
+          const active = isCurrentUrl(href);
+          return `<a class="nav-article${
+            active ? " is-active" : ""
+          }" href="${escapeHtml(href)}"${
+            active ? ' aria-current="page"' : ""
+          }>${escapeHtml(article.title)}</a>`;
+        })
+        .join("")}</div></div>`;
+      };
+
       const categoryMarkup = navigation.categories
         .map((category) => {
           const sections = sectionsByCategory.get(String(category.id)) || [];
-          return `<div class="nav-category">${escapeHtml(
-          category.name
-        )}</div>${sections
-          .map((section) => {
-            const articles = articlesBySection.get(String(section.id)) || [];
-            const currentSection = isCurrentUrl(
-              sectionUrl(section, helpCenterPath)
-            );
-            const currentArticle = articles.some((article) =>
-              isCurrentUrl(articleUrl(article, helpCenterPath))
-            );
-            const expanded =
-              openSections.has(String(section.id)) ||
-              currentSection ||
-              currentArticle;
-            return `<div class="nav-section"><button class="nav-section-toggle" type="button" data-section-toggle="${escapeHtml(
-              section.id
-            )}" aria-expanded="${expanded}"><span class="nav-section-label">${escapeHtml(
-              section.name
-            )}</span><span class="nav-chevron">${icon(
-              "chevron"
-            )}</span></button><div class="nav-articles" data-section-articles="${escapeHtml(
-              section.id
-            )}"${expanded ? "" : " hidden"}>${articles
-              .map((article) => {
-                const href = articleUrl(article, helpCenterPath);
-                return `<a class="nav-article${
-                  isCurrentUrl(href) ? " is-active" : ""
-                }" href="${escapeHtml(href)}"${
-                  isCurrentUrl(href) ? ' aria-current="page"' : ""
-                }>${escapeHtml(article.title)}</a>`;
-              })
-              .join("")}</div></div>`;
-          })
+          return `<div class="nav-category">${escapeHtml(category.name)}</div>${sections
+          .map(renderSection)
           .join("")}`;
         })
         .join("");
 
+      const uncategorizedMarkup = navigation.sections
+        .filter(
+          (section) =>
+            !navigation.categories.some(
+              (category) => String(category.id) === String(section.category_id)
+            )
+        )
+        .map(renderSection)
+        .join("");
+
+      const navigationMarkup = `${categoryMarkup}${uncategorizedMarkup}`;
       sidebarNav.innerHTML =
-        categoryMarkup ||
+        navigationMarkup ||
         `<a class="nav-article sidebar-home" href="${escapeHtml(
         helpCenterPath
       )}">Overview</a>`;
@@ -841,6 +852,38 @@
       return category?.name || "Documentation";
     };
 
+    const articleLocationForArticle = (article) => {
+      const section =
+        navigation.sections.find(
+          (item) => String(item.id) === String(article.section_id)
+        ) || article.section;
+      const category = navigation.categories.find(
+        (item) => String(item.id) === String(section?.category_id)
+      );
+      const categoryName =
+        article.category_name ||
+        article.category?.name ||
+        article.section?.category_name ||
+        article.section?.category?.name ||
+        category?.name ||
+        "";
+      const sectionName = section?.name || article.section_name || "";
+
+      return [categoryName, sectionName].filter(Boolean).join(" · ");
+    };
+
+    const currentArticleFromNavigation = () => {
+      const currentPathArticle = navigation.articles.find((article) =>
+        isCurrentUrl(articleUrl(article, helpCenterPath))
+      );
+      if (currentPathArticle) return currentPathArticle;
+
+      const articleId = window.location.pathname.match(/\/articles\/(\d+)/)?.[1];
+      return navigation.articles.find(
+        (article) => String(article.id) === String(articleId)
+      );
+    };
+
     try {
       const prefix = `/api/v2/help_center/${encodeURIComponent(locale)}`;
       const results = await Promise.allSettled([
@@ -867,11 +910,11 @@
       renderCategoryArticleCounts();
 
       const articleCategory = document.querySelector("[data-article-category]");
-      const currentArticle = navigation.articles.find((article) =>
-        isCurrentUrl(articleUrl(article, helpCenterPath))
-      );
+      const currentArticle = currentArticleFromNavigation();
       if (articleCategory && currentArticle) {
-        articleCategory.textContent = categoryNameForArticle(currentArticle);
+        articleCategory.textContent =
+          articleLocationForArticle(currentArticle) ||
+          categoryNameForArticle(currentArticle);
       }
 
       results.forEach((result, index) => {

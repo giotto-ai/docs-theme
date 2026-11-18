@@ -4916,10 +4916,12 @@ zd-summary-block {
 
 /* Giotto docs layer: keeps Zendesk helpers, with the Giotto product surface. */
 html {
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
 body {
+  overflow-x: hidden;
   background: #fff;
   color: #161a23;
   font-size: 14px;
@@ -5782,6 +5784,8 @@ summary {
   display: grid;
   grid-template-columns: 280px minmax(0, 1fr);
   min-height: 100vh;
+  min-width: 0;
+  overflow-x: clip;
   background: #fff;
 }
 
@@ -5906,6 +5910,7 @@ summary {
   border-radius: 6px;
   background: transparent;
   color: #4a5163;
+  cursor: pointer;
   text-align: left;
   font-size: 13px;
 }
