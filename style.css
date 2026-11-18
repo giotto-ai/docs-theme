@@ -6837,6 +6837,7 @@ a[href*=poweredbyzendesk] {
   .topbar-search {
     flex: 1 1 auto;
     width: auto;
+    min-width: 0;
     max-width: none;
   }
   .topbar-actions {
@@ -6844,14 +6845,15 @@ a[href*=poweredbyzendesk] {
     margin-left: 8px;
   }
   .topbar-auth-button {
+    flex: 0 0 auto;
     min-height: 36px;
-    padding: 0 10px;
-    font-size: 13px;
+    padding: 0 8px;
+    font-size: 12px;
   }
   .topbar-actions .button-primary, .topbar-actions .split-button button:hover, .split-button .topbar-actions button:hover, .topbar-actions .section-subscribe button[data-selected=true], .section-subscribe .topbar-actions button[data-selected=true], .topbar-actions .article-subscribe button[data-selected=true], .article-subscribe .topbar-actions button[data-selected=true], .topbar-actions .requests-table-toolbar .organization-subscribe button[data-selected=true], .requests-table-toolbar .organization-subscribe .topbar-actions button[data-selected=true], .topbar-actions .subscriptions-subscribe button[data-selected=true], .subscriptions-subscribe .topbar-actions button[data-selected=true] {
-    max-width: 136px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    max-width: none;
+    overflow: visible;
+    text-overflow: clip;
   }
   .main-content {
     padding: 48px 20px 72px;

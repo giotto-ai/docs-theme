@@ -719,10 +719,10 @@ a[href*="poweredbyzendesk"] { display: none !important; }
   .sidebar-close, .menu-trigger { display: inline-grid; }
   .menu-trigger { margin-right: 10px; }
   .topbar { min-height: 60px; padding: 0 16px; }
-  .topbar-search { flex: 1 1 auto; width: auto; max-width: none; }
+  .topbar-search { flex: 1 1 auto; width: auto; min-width: 0; max-width: none; }
   .topbar-actions { gap: 6px; margin-left: 8px; }
-  .topbar-auth-button { min-height: 36px; padding: 0 10px; font-size: 13px; }
-  .topbar-actions .button-primary { max-width: 136px; overflow: hidden; text-overflow: ellipsis; }
+  .topbar-auth-button { flex: 0 0 auto; min-height: 36px; padding: 0 8px; font-size: 12px; }
+  .topbar-actions .button-primary { max-width: none; overflow: visible; text-overflow: clip; }
   .main-content { padding: 48px 20px 72px; }
   .category-grid, .section-grid { grid-template-columns: 1fr; }
   .skeleton-home-card-grid { grid-template-columns: 1fr; }

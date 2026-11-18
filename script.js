@@ -828,6 +828,8 @@
     const categoryNameForArticle = (article) => {
       if (article.category_name) return article.category_name;
       if (article.category?.name) return article.category.name;
+      if (article.section?.category_name) return article.section.category_name;
+      if (article.section?.category?.name) return article.section.category.name;
 
       const section = navigation.sections.find(
         (item) => String(item.id) === String(article.section_id)
@@ -863,6 +865,14 @@
       navigation = { categories, sections, articles };
       renderSidebar();
       renderCategoryArticleCounts();
+
+      const articleCategory = document.querySelector("[data-article-category]");
+      const currentArticle = navigation.articles.find((article) =>
+        isCurrentUrl(articleUrl(article, helpCenterPath))
+      );
+      if (articleCategory && currentArticle) {
+        articleCategory.textContent = categoryNameForArticle(currentArticle);
+      }
 
       results.forEach((result, index) => {
         if (result.status === "rejected") {
