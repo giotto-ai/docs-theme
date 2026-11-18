@@ -8,15 +8,40 @@ $giotto-ring: rgba(107, 114, 128, .35);
 
 html {
   overflow-x: hidden;
+  scrollbar-color: #c9ced9 transparent;
+  scrollbar-width: thin;
   scroll-behavior: smooth;
 }
 
 body {
   overflow-x: hidden;
+  scrollbar-color: #c9ced9 transparent;
+  scrollbar-width: thin;
   background: #fff;
   color: $giotto-foreground;
   font-size: 14px;
 }
+
+* {
+  scrollbar-color: #c9ced9 transparent;
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track { background: transparent; }
+
+*::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: #c9ced9;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover { background: #b8bec9; background-clip: padding-box; }
 
 a {
   color: #4f5f8f;
@@ -722,6 +747,7 @@ a[href*="poweredbyzendesk"] { display: none !important; }
 }
 
 @media (max-width: 767px) {
+  kbd { display: none; }
   .app-shell { display: block; }
   .docs-sidebar { position: fixed; inset: 0 auto 0 0; z-index: 16; width: min(320px, calc(100vw - 48px)); transform: translateX(-100%); transition: transform .2s ease; box-shadow: 16px 0 32px rgba(23, 25, 28, .12); }
   .docs-sidebar.is-open { transform: translateX(0); }
