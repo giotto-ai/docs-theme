@@ -6849,8 +6849,10 @@ a[href*=poweredbyzendesk] {
   }
 }
 @media (max-width: 767px) {
-  kbd {
-    display: none;
+  kbd,
+  .shortcut,
+  .topbar-search .shortcut {
+    display: none !important;
   }
   .app-shell {
     display: block;
